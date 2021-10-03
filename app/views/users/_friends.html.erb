@@ -1,0 +1,27 @@
+<% if !@friends.empty? %>
+<div class="col-9" >
+  <div class="results-block">
+    <%= render 'layouts/messages' %>
+  </div>
+  <table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Username</th>
+      <th scope="col">Fullname</th>
+      <th scope="col">Email</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @friends.each do |friend| %>
+    <tr>
+      <th scope="row"><%= friend.username %></th>
+      <td><%= friend.full_name %></td>
+      <td><%= friend.email %></td>
+      <td><%= link_to "Stop Following", friendship_path(friend), method: :delete, data: {confirm: "Are you sure"}, class: "btn btn-danger" %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<% end %>
